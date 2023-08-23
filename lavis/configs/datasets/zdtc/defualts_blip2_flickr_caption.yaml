@@ -1,0 +1,17 @@
+datasets:
+  flickr30k_caption: # name of the dataset builder
+  #data_dir: ${env.data_dir}
+    data_type: images # [images|videos|features]
+
+    build_info:
+      # Be careful not to append minus sign (-) before split to avoid itemizing
+      annotations:
+
+        test:
+          storage:
+              /home/yexiaohan/data/vlp_ann/stage1/eval/flickr30k_pretrain.json
+              # image / image_id / instance_id
+
+      images:
+        storage: /home/share/yexiaohan/data
+        # storage: /data/yexiaohan/baidu_images_1000w

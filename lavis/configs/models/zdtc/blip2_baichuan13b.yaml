@@ -1,0 +1,39 @@
+model:
+  arch: blip2_baichuan13b_instruct
+  load_finetuned: False
+  load_pretrained: True
+  pretrained: "/home/yexiaohan/code/LAVIS/lavis/output/ZDTC_BLIP2/Pretrain_stage1_250M/20230807231/checkpoint_156249.pth"
+  finetuned: ""
+
+  # vit encoder
+  image_size: 224
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+  freeze_vit: True
+
+  max_txt_len : 64
+  max_output_txt_len : 64
+
+  # Q-Former
+  num_query_token: 32
+
+  # LLM
+  llm_model: "/home/share/tianxin/output/baichuan-13B-sft/4node_v8_20230430/checkpoint-5600"
+  
+  # generation configs
+  prompt: "###问题：\n{}\n\n###答案："
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip_image_train"
+          image_size: 224
+        eval:
+          name: "blip_image_eval"
+          image_size: 224
+    text_processor:
+        train:
+          name: "blip_caption"
+        eval:
+          name: "blip_caption"

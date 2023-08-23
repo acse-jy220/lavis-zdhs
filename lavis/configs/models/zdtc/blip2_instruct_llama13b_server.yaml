@@ -1,0 +1,39 @@
+model:
+  arch: blip2_llama_instruct
+  load_finetuned: True
+
+  pretrained: ""
+  # finetuned: "/home/yexiaohan/code/LAVIS-CMM/lavis/output/BLIP2/Pretrain_stage2_Instruct/20230529103/checkpoint_4.pth"
+  finetuned: "/home/share/yexiaohan/model/Instruct_27M_13B/checkpoint_2.pth"
+
+  # vit encoder
+  image_size: 448
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+  freeze_vit: True
+
+  # Q-Former
+  num_query_token: 32
+  bert_path: 'data/bert-base-chinese'
+
+  # OPT
+  llm_model: "/home/share/tianxin/output/wair_llama_with_qa_instruction/13B/wiki_zh_and_bdbk_4node_warmstart_v1_ckpt3k_v2_ckpt9p7w_current1p5w/v13_20230530/checkpoint-6000/"
+
+  # generation configs
+  prompt: "###问题：\n{}\n\n###答案："
+
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip_image_train"
+          image_size: 448
+        eval:
+          name: "blip_image_eval"
+          image_size: 448
+    text_processor:
+        train:
+          name: "blip_caption"
+        eval:
+          name: "blip_caption"

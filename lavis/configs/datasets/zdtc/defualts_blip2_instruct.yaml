@@ -1,0 +1,56 @@
+datasets:
+  zdtc_blip2_instruct: # name of the dataset builder
+  #data_dir: ${env.data_dir}
+    data_type: images # [images|videos|features]
+
+    build_info:
+      # Be careful not to append minus sign (-) before split to avoid itemizing
+      annotations:
+        train:
+          storage: 
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_gpt_reason_cn_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_aic_sample_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_coco_cn_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_fmiqa_m3it_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_okvqa_cn_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_vqav2_cn_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_aokvqa_cn_gpt_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_coco_detail_gpt_train_1.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_llava_cn_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_CN/json_stage2_v5_vqav2_cn_gpt_train.json
+
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_EN/json_stage2_v5_llava_en_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_EN/json_stage2_v5_coco_en_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_EN/json_stage2_v5_aokvqa_en_m3it_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_EN/json_stage2_v5_okvqa_en_m3it_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_EN/json_stage2_v5_okvqa_en_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_EN/json_stage2_v5_viquae_en_m3it_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_EN/json_stage2_v5_viquae_en_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_EN/json_stage2_v5_vqav2_en_m3it_train.json
+              - /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_v5_EN/json_stage2_v5_vqav2_en_train.json
+
+        # test:
+        #   storage:
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/flickr30k_insturct_test_en.json
+
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/flickr30k_insturct_test_cn.json
+
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/GQA_insturct_testdev_en.json
+
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/GQA_insturct_testdev_cn.json
+
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/flickr30k_stage2_en.json
+
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/flickr30k_stage2_cn.json
+
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/nocaps_instruct_test_image.json
+
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/nocaps_instruct_val_image.json
+
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/visual_dialog_val.json
+
+              # /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/okvqa_insturct_val_en.json
+
+      images:
+        storage: /home/share/yexiaohan/data
+        # storage: /data/yexiaohan/baidu_images_1000w

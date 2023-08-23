@@ -1,0 +1,35 @@
+datasets:
+  zdtc_blip2_caption_wds:
+
+    data_type: images
+
+    build_info:
+      # Be careful not to append minus sign (-) before split to avoid itemizing
+      storage: 
+        # 0725
+        # - /home/yidongyi/ImageDataSets/laion_filtered/laion_filtered_out
+        # - /home/share/yexiaohan/data/cc12m-filter
+        # - /home/share/yexiaohan/data/cc3m-filter
+        # - /home/share/yexiaohan/data/coco-en-filter
+        # - /home/share/yexiaohan/data/wukong_tar
+        # - /home/share/yexiaohan/data/wukong-filter
+        # - /home/yidongyi/ImageDataSets/zero/zero_tar
+        # - /home/share/yexiaohan/data/laion-cn-clean
+        # - /home/share/yexiaohan/data/aic-filter
+        # - /home/share/yexiaohan/data/coco-cn-filter
+
+        # 0728
+        - /home/yidongyi/ImageDataSets/laion_filtered/laion_filtered_out/
+        - /home/yidongyi/ImageDataSets/coyo-700m-cn_clip/
+        - /home/yidongyi/ImageDataSets/cc12m/tars
+        - /home/share/yexiaohan/data/cc3m-filter
+        - /home/share/yexiaohan/data/coco-en-filter
+        - /home/yidongyi/ImageDataSets/wukong/wukong_tar
+        - /home/share/yexiaohan/data/wukong-filter
+        - /home/yidongyi/ImageDataSets/zero/zero_tar
+        - /home/share/yexiaohan/data/laion-cn-clean
+        - /home/share/yexiaohan/data/aic-filter
+        - /home/share/yexiaohan/data/coco-cn-filter
+        - /home/yidongyi/ImageDataSets/taisu/cn_clip_filter_1w_per_tar
+
+      samples_per_inner_epoch: -1

@@ -1,0 +1,47 @@
+model:
+  arch: blip2_baichuan7b_instruct
+  load_finetuned: True
+
+  pretrained: ""
+  # finetuned: "/home/yexiaohan/code/LAVIS-CMM-dev/lavis/output/BLIP2/Instruct/20230713214/checkpoint_0.pth" # CN base cn
+  # finetuned: "/home/yexiaohan/code/LAVIS-CMM-dev/lavis/output/BLIP2/Instruct/20230714164/checkpoint_0.pth" # DU base cn
+  # finetuned: "/home/yexiaohan/code/LAVIS-CMM-dev/lavis/output/BLIP2/Pretrain_stage2_0628_ep3_TESTDU_IN/20230715194/checkpoint_130205_processed.pth" # DU base
+  # finetuned: "/home/yexiaohan/code/LAVIS-CMM-dev/lavis/output/BLIP2/Instruct/20230718151/checkpoint_0.pth" # DU base du_in
+  # finetuned: "/home/share/yexiaohan/model/blip2_pretrain_s2_du_260410/checkpoint.pth" # DU stage2
+  # finetuned: "/home/yexiaohan/code/LAVIS/lavis/output/BLIP2/Instruct_OKVQA/20230727164/checkpoint_4.pth" # OK Finetune
+  # finetuned: "/home/yexiaohan/code/LAVIS/lavis/output/BLIP2/Instruct_OKVQA/20230727175/checkpoint_9.pth" # OK Finetune 2
+  # finetuned: "/home/yexiaohan/data/vlp_model/instruct_test_2_0818_checkpoint_0.pth"
+  finetuned: "/home/yexiaohan/code/LAVIS/lavis/output/BLIP2/Instruct_100M/20230822172/checkpoint_0.pth"
+
+  # vit encoder
+  image_size: 448
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+  freeze_vit: True
+
+  # Q-Former
+  num_query_token: 32
+
+  # OPT
+  llm_model: "/home/share/tianxin/output/baichuan-7B-sft/v8_20230430/checkpoint-2200"
+
+  peft_type: "lora"
+
+  # generation configs
+  prompt: "###问题：\n{}\n\n###答案："
+
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip_image_train"
+          image_size: 448
+        eval:
+          name: "blip_image_eval"
+          image_size: 448
+    text_processor:
+        train:
+          name: "blip_caption"
+        eval:
+          name: "blip_caption"

@@ -1,0 +1,41 @@
+model:
+  # arch: blip2_blip2_baichuan7b
+  arch: blip2_baichuan7b_instruct
+  load_finetuned: False
+  load_pretrained: True
+  pretrained: "/home/share/yexiaohan/model/blip2_pretrain_s2_du_260410/checkpoint.pth"
+  finetuned: ""
+
+  # vit encoder
+  image_size: 224
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+  freeze_vit: True
+
+  max_txt_len : 64
+  max_output_txt_len : 64
+
+  # Q-Former
+  num_query_token: 32
+
+  # LLM
+  llm_model: "/home/share/tianxin/output/baichuan-7B-sft/v8_20230430/checkpoint-2200"
+  # llm_model: "/home/share/tianxin/output/wair_llama_with_qa_instruction/13B/wiki_zh_and_bdbk_4node_warmstart_v1_ckpt3k_v2_ckpt9p7w_current1p5w/v13_20230530/checkpoint-6000"
+  
+  # generation configs
+  prompt: "###问题：\n{}\n\n###答案："
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip_image_train"
+          image_size: 224
+        eval:
+          name: "blip_image_eval"
+          image_size: 224
+    text_processor:
+        train:
+          name: "blip_caption"
+        eval:
+          name: "blip_caption"

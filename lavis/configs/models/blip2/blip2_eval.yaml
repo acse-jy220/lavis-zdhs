@@ -1,0 +1,42 @@
+ # Copyright (c) 2022, salesforce.com, inc.
+ # All rights reserved.
+ # SPDX-License-Identifier: BSD-3-Clause
+ # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+model:
+  arch: evaluation
+  load_finetuned: True
+
+  pretrained: ""
+  finetuned: "/home/share/yexiaohan/model/blip2_pretrain_250m_s1/checkpoint_78124.pth"
+
+  # vit encoder
+  image_size: 364
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp32"
+  freeze_vit: True
+
+  # Q-Former
+  num_query_token: 32
+
+  # LLM
+  llm_model: "/home/share/tianxin/output/baichuan-7B-sft/v8_20230430/checkpoint-2200"
+  # llm_model: "/home/share/tianxin/output/wair_llama_with_qa_instruction/13B/wiki_zh_and_bdbk_4node_warmstart_v1_ckpt3k_v2_ckpt9p7w_current1p5w/v13_20230530/checkpoint-6000"
+
+  # prompt: "###问题：\npicture content\n\n###答案："
+  prompt: "###答案："
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip_image_train"
+          image_size: 364
+        eval:
+          name: "blip_image_eval"
+          image_size: 364
+    text_processor:
+        train:
+          name: "blip_caption"
+        eval:
+          name: "blip_caption"

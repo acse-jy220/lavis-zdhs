@@ -1,0 +1,53 @@
+ # Copyright (c) 2022, salesforce.com, inc.
+ # All rights reserved.
+ # SPDX-License-Identifier: BSD-3-Clause
+ # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+model:
+  arch: blip2_baichuan7b_instruct
+  model_type: baichuan7b_server
+  use_grad_checkpoint: False
+  add_chinese_tokens: True
+
+datasets:
+  zdtc_blip2_instruct: # name of the dataset builder
+    vis_processor:
+        eval:
+          name: "blip_image_eval"
+          image_size: 448
+    text_processor:
+        eval:
+          name: "blip_caption"
+
+run:
+  task: llm_generation
+
+  # dataloading
+  num_workers: 4
+  batch_size_train: 1
+  batch_size_eval: 40
+
+  test_splits: ["test"]
+
+  # distribution
+  device: "cuda"
+  world_size: 1
+  dist_url: "env://"
+  distributed: True
+  use_dist_eval_sampler: True
+
+  # model specific / evaluation
+  max_len: 64
+  min_len: 1
+  num_beams: 5
+  
+  is_caption: True
+  # candidates_file: /home/yexiaohan/data/vlp_ann/stage2/blip2_instruct_eval/visual_dialog_candidate.json
+  # n_segments: 1
+
+
+  # misc
+  seed: 42
+  output_dir: "output/ZDTC_BLIP2/Instruct_Eval_Flickr"
+
+  evaluate: True
