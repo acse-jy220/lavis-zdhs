@@ -43,7 +43,7 @@ class Blip2Qformer(Blip2Base):
         "pretrain_vitL": "configs/models/blip2/blip2_pretrain_vitL.yaml",
         "coco": "configs/models/blip2/blip2_coco.yaml",
         "evaluation": "configs/models/blip2/blip2_eval.yaml",
-        "cocotrain": "lavis\configs\models\blip2\blip2_cocotrain.yaml",
+        "cocotrain": "lavis/configs/models/blip2/blip2_cocotrain.yaml",
     }
 
     def __init__(
