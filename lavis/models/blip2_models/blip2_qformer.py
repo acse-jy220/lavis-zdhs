@@ -94,7 +94,7 @@ class Blip2Qformer(Blip2Base):
 
     def forward(self, samples):
         image = samples["image"]
-        text = samples["text_output"]
+        text = samples["text_input"]
 
         image_embeds = self.ln_vision(self.visual_encoder(image))
         image_atts = torch.ones(image_embeds.size()[:-1], dtype=torch.long).to(
